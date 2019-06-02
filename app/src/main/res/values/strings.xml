@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">MateCheck</string>
+    <string name="author_name">Created by Dávid Hreško</string>
+    <string name="reg">Create account</string>
+    <string name="login">Log in</string>
+    <string name="login_full">Login</string>
+    <string name="logout">Logout</string>
+    <string name="hint_email">Your email</string>
+    <string name="hint_password">Password</string>
+    <string name="username">%1$s %2$s</string>
+
+    <string name="reg_name">Introduce yourself</string>
+    <string name="hint_name">First name</string>
+    <string name="hint_surname">Surname</string>
+    <string name="reg_next">Next</string>
+    <string name="photo_placeholder">Your photo</string>
+    <string name="sign_up">Sign up</string>
+    <string name="password_help">Must contain at least 8 characters</string>
+
+    <string name="reg_account">Setup your account</string>
+    <string name="google_login">Continue with google</string>
+    <string name="login_error">This email and password combination is incorrect.</string>
+
+    <string name="title_groups">Groups</string>
+    <string name="title_tasks">Tasks</string>
+    <string name="title_profile">Profile</string>
+
+</resources>
+
