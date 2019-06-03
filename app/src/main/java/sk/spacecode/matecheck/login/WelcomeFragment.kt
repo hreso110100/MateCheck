@@ -4,6 +4,7 @@ package sk.spacecode.matecheck.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_welcome.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.common.ComponentBuilder
 import sk.spacecode.matecheck.home.HomeActivity
+import sk.spacecode.matecheck.model.User
 
 class WelcomeFragment : Fragment() {
 
@@ -95,6 +98,16 @@ class WelcomeFragment : Fragment() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(activity as Activity) { task ->
                 if (task.isSuccessful) {
+                    firebaseAuth.currentUser?.let { user ->
+                        val firstName = user.displayName?.takeWhile { it != ' ' }
+                        val surName = user.displayName?.takeLastWhile { it != ' ' }
+                        val photoPath = user.photoUrl.toString().replace("s96", "s512")
+                        val email = user.email
+                        val userData = User(firstName, surName, photoPath, email)
+
+                        FirebaseFirestore.getInstance().collection("Users")
+                            .document(user.uid).set(userData)
+                    }
                     startActivity(Intent(activity, HomeActivity::class.java))
                 } else {
                     builder.createSnackBar(rootView.welcome_google_button, "Authentication failed.", activity)

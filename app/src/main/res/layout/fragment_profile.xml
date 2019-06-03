@@ -5,7 +5,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_home"
         tools:context=".home.ProfileFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -51,6 +50,17 @@
             android:layout_marginBottom="80dp"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"/>
+
+    <ProgressBar
+            android:id="@+id/profile_progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:indeterminateTint="@color/colorPrimary"
+            android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
