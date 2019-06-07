@@ -102,10 +102,11 @@ class RegistrationSecondFragment : Fragment() {
                         val firstName = bundle.getString("firstName")
                         val surName = bundle.getString("surname")
                         val photoPath = bundle.getString("photoPath")
-                        val userData = User(firstName, surName, photoPath, email)
+                        val userId = auth.currentUser?.uid.toString()
+                        val userData = User(userId, firstName, surName, photoPath, email)
 
                         val photoURI = Uri.fromFile(File(photoPath))
-                        val storageRef = storage.reference.child("profilePhotos/${auth.currentUser?.uid}")
+                        val storageRef = storage.reference.child("profilePhotos/$userId")
 
                         storageRef.putFile(photoURI)
                             .continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
@@ -116,23 +117,21 @@ class RegistrationSecondFragment : Fragment() {
                                 }
                                 return@Continuation storageRef.downloadUrl
                             }).addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                userData.photoPath = storageRef.downloadUrl.toString()
-                            } else {
+                                if (task.isSuccessful) {
+                                    userData.photoPath = storageRef.downloadUrl.toString()
+                                } else {
 
-                            }
-                        }
-
-                        auth.currentUser?.uid?.let { userID ->
-                            FirebaseFirestore.getInstance().collection("Users")
-                                .document(userID).set(userData).addOnCompleteListener {
-                                    if (task.isSuccessful) {
-                                        Log.d(TAG, "createUserFirestore:success")
-                                    } else {
-                                        Log.d(TAG, "createUserFirestore:failure", task.exception)
-                                    }
                                 }
-                        }
+                            }
+
+                        FirebaseFirestore.getInstance().collection("Users")
+                            .document(userId).set(userData).addOnCompleteListener {
+                                if (task.isSuccessful) {
+                                    Log.d(TAG, "createUserFirestore:success")
+                                } else {
+                                    Log.d(TAG, "createUserFirestore:failure", task.exception)
+                                }
+                            }
                     }
                     startActivity(Intent(activity, HomeActivity::class.java))
                 } else {

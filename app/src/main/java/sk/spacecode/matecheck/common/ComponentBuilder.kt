@@ -13,6 +13,7 @@ class ComponentBuilder {
 
         context?.let {
             snackbar.view.setBackgroundColor(ContextCompat.getColor(it.applicationContext, R.color.black))
+            snackbar.setTextColor(context.resources.getColor(android.R.color.white))
         }
         snackbar.show()
     }

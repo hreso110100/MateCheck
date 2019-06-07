@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/groups_add_root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".home.AddGroupFragment">
+
+    <ImageView
+            android:id="@+id/groups_add_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/ic_keyboard_arrow_left_white_40dp"/>
+
+    <TextView
+            android:id="@+id/groups_add_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="32sp"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/add_members"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.08"/>
+
+    <HorizontalScrollView
+            android:id="@+id/groups_scrollview_layout"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/groups_add_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.chip.ChipGroup
+                android:id="@+id/groups_chipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:singleLine="true">
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <AutoCompleteTextView
+            android:id="@+id/groups_add_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:hint="@string/group_search"
+            android:textColorHint="@android:color/black"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:textCursorDrawable="@drawable/cursor_green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:drawableStart="@drawable/ic_search_green_24dp"
+            android:drawablePadding="8dp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/groups_scrollview_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.07"/>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/groups_add_next_button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/groups_add_search"
+            android:text="@string/reg_next"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:alpha="0.5"
+            app:cornerRadius="35dp"
+            android:textAllCaps="false"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:enabled="false"
+            android:layout_margin="16dp"
+            app:layout_constraintVertical_bias="0.929"
+            android:layout_marginEnd="16dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

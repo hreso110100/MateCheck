@@ -34,8 +34,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintVertical_bias="0.082"
-            app:layout_constraintHorizontal_bias="0.502"/>
+            app:layout_constraintVertical_bias="0.082"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/registration_upload_photo"
@@ -74,7 +73,7 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:inputType="textPersonName|textCapWords"
-                android:textCursorDrawable="@drawable/cursor"/>
+                android:textCursorDrawable="@drawable/cursor_white"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +100,7 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:inputType="textPersonName|textCapWords"
-                android:textCursorDrawable="@drawable/cursor"/>
+                android:textCursorDrawable="@drawable/cursor_white"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

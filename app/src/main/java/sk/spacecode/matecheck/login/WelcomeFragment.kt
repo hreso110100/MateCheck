@@ -103,7 +103,7 @@ class WelcomeFragment : Fragment() {
                         val surName = user.displayName?.takeLastWhile { it != ' ' }
                         val photoPath = user.photoUrl.toString().replace("s96", "s512")
                         val email = user.email
-                        val userData = User(firstName, surName, photoPath, email)
+                        val userData = User(user.uid, firstName, surName, photoPath, email)
 
                         FirebaseFirestore.getInstance().collection("Users")
                             .document(user.uid).set(userData)

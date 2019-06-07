@@ -1,8 +1,9 @@
 package sk.spacecode.matecheck.model
 
 data class User(
-    var firstName: String?,
-    var surname: String?,
-    var photoPath: String?,
-    var email: String?
+    var id: String? = null,
+    var firstName: String? = null,
+    var surname: String? = null,
+    var photoPath: String? = null,
+    var email: String? = null
 )

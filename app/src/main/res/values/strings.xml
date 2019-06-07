@@ -24,6 +24,14 @@
     <string name="title_groups">Groups</string>
     <string name="title_tasks">Tasks</string>
     <string name="title_profile">Profile</string>
+    <string name="groups_text">Groups</string>
+    <string name="group_search">Search</string>
+
+    <string name="add_members">Add members</string>
+    <string name="group_name_hint">Group name</string>
+    <string name="group_name">Name your group</string>
+    <string name="group_members">Members</string>
+    <string name="group_create">Create</string>
 
 </resources>
 
