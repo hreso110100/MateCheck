@@ -1,7 +1,6 @@
-package sk.spacecode.matecheck.home
+package sk.spacecode.matecheck.home.groups.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import org.apache.commons.lang3.StringUtils
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.model.User
 
-class GroupAdapter(context: Context, users: ArrayList<User>) :
+class GroupSuggestionsAdapter(context: Context, users: ArrayList<User>) :
     ArrayAdapter<User>(context, 0, users), Filterable {
 
     private var userList: ArrayList<User> = ArrayList(users)

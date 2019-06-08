@@ -1,4 +1,4 @@
-package sk.spacecode.matecheck.home
+package sk.spacecode.matecheck.home.groups
 
 
 import android.os.Bundle
@@ -7,10 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_add_group_name.view.*
+import kotlinx.android.synthetic.main.fragment_groups.view.*
 import sk.spacecode.matecheck.R
+import sk.spacecode.matecheck.home.groups.adapters.GroupMembersRecyclerAdapter
 import sk.spacecode.matecheck.model.Group
 import java.sql.Timestamp
 import java.util.*
@@ -23,15 +27,23 @@ class AddGroupNameFragment : Fragment() {
 
     private lateinit var rootView: View
     private lateinit var auth: FirebaseAuth
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        rootView = inflater.inflate(R.layout.fragment_add_group_name, container, false)
         auth = FirebaseAuth.getInstance()
+        rootView = inflater.inflate(R.layout.fragment_add_group_name, container, false)
 
+        with(rootView.groups_add_name_recycler) {
+            activity?.let {
+                adapter = GroupMembersRecyclerAdapter(it.applicationContext, AddGroupFragment.addedUsers)
+                linearLayoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
+                layoutManager = linearLayoutManager
+            }
+        }
         return rootView
     }
 

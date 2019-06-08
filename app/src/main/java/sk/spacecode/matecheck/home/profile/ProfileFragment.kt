@@ -1,4 +1,4 @@
-package sk.spacecode.matecheck.home
+package sk.spacecode.matecheck.home.profile
 
 
 import android.content.Intent

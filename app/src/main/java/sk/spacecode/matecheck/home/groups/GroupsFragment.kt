@@ -1,4 +1,4 @@
-package sk.spacecode.matecheck.home
+package sk.spacecode.matecheck.home.groups
 
 
 import android.os.Bundle
@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_home.view.*
 import kotlinx.android.synthetic.main.fragment_groups.view.*
 import sk.spacecode.matecheck.R
-import sk.spacecode.matecheck.login.LoginFragment
+import sk.spacecode.matecheck.home.groups.AddGroupFragment
 
 class GroupsFragment : Fragment() {
 

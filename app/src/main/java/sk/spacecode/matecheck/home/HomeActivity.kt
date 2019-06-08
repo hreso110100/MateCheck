@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 import sk.spacecode.matecheck.R
+import sk.spacecode.matecheck.home.groups.GroupsFragment
+import sk.spacecode.matecheck.home.profile.ProfileFragment
+import sk.spacecode.matecheck.home.tasks.TasksFragment
 
 
 class HomeActivity : AppCompatActivity() {
