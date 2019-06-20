@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient_login"
-        tools:context=".login.RegistrationSecondFragment">
+        tools:context=".login.registration.RegistrationSecondFragment">
 
     <ImageView
             android:id="@+id/registration_account_back_button"

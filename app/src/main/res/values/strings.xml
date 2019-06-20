@@ -32,6 +32,10 @@
     <string name="group_name">Name your group</string>
     <string name="group_members">Members</string>
     <string name="group_create">Create</string>
+    <string name="groups_info">Your groups</string>
+
+    <string name="group_task_add">Add task</string>
+    <string name="concrete_group_empty_text">There are currently no tasks.</string>
 
 </resources>
 

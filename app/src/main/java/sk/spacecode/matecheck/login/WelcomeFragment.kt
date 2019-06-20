@@ -4,7 +4,6 @@ package sk.spacecode.matecheck.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_welcome.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.common.ComponentBuilder
 import sk.spacecode.matecheck.home.HomeActivity
+import sk.spacecode.matecheck.login.registration.RegistrationFirstFragment
 import sk.spacecode.matecheck.model.User
 
 class WelcomeFragment : Fragment() {
@@ -60,7 +60,9 @@ class WelcomeFragment : Fragment() {
 
         rootView.welcome_create_account_button.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.login_registration_fragment, RegistrationFirstFragment())?.addToBackStack(null)
+                ?.replace(R.id.login_registration_fragment,
+                    RegistrationFirstFragment()
+                )?.addToBackStack(null)
                 ?.commit()
         }
 

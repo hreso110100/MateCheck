@@ -6,7 +6,7 @@
         android:id="@+id/groups_add_root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@drawable/gradient_grey"
         tools:context=".home.groups.AddGroupFragment">
 
     <ImageView

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.group_recycler_row.view.*
+import kotlinx.android.synthetic.main.group_members_recycler_row.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.model.User
 
@@ -14,7 +14,7 @@ class GroupMembersRecyclerAdapter(val context: Context, var members: ArrayList<U
     RecyclerView.Adapter<GroupMembersRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.group_recycler_row, parent, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.group_members_recycler_row, parent, false))
     }
 
     override fun getItemCount() = members.size

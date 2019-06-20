@@ -1,4 +1,4 @@
-package sk.spacecode.matecheck.login
+package sk.spacecode.matecheck.login.registration
 
 import android.app.Activity
 import android.content.Intent

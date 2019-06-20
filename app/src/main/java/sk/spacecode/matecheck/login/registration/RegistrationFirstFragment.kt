@@ -1,8 +1,7 @@
-package sk.spacecode.matecheck.login
+package sk.spacecode.matecheck.login.registration
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,23 +10,20 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.google.common.reflect.Reflection.getPackageName
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.*
 import com.karumi.dexter.listener.single.PermissionListener
 import kotlinx.android.synthetic.main.fragment_registration_first.view.*
 import sk.spacecode.matecheck.R
-import sk.spacecode.matecheck.home.HomeActivity
+import sk.spacecode.matecheck.login.LoginActivity
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
