@@ -3,20 +3,16 @@ package sk.spacecode.matecheck.home.groups
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_concrete_group.view.*
-import kotlinx.android.synthetic.main.fragment_groups.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.home.groups.adapters.GroupMembersRecyclerAdapter
-import sk.spacecode.matecheck.home.groups.adapters.GroupsListRecyclerAdapter
-import sk.spacecode.matecheck.home.groups.decorators.RecyclerViewItemDecorator
+import sk.spacecode.matecheck.home.groups.tasks.AddTaskDescriptionFragment
 import sk.spacecode.matecheck.model.Group
 import sk.spacecode.matecheck.model.User
 
@@ -57,7 +53,10 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         }
 
         rootView.concrete_group_add_task_button.setOnClickListener {
-
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.home_fragment_container, AddTaskDescriptionFragment())
+                ?.addToBackStack(null)
+                ?.commit()
         }
 
         rootView.concrete_group_appBarLayout.addOnOffsetChangedListener(this)

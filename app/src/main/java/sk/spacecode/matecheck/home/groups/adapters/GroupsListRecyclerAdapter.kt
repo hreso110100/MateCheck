@@ -49,8 +49,6 @@ class GroupsListRecyclerAdapter(val context: Context, var groups: ArrayList<Grou
                 .addToBackStack(null)
                 .commit()
 
-            HomeActivity.active = fragment
-
         }
     }
 }
