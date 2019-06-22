@@ -19,19 +19,20 @@ import sk.spacecode.matecheck.model.User
 class GroupMemberSelectableAdapter(val context: Context, var members: ArrayList<User>) :
     RecyclerView.Adapter<GroupMemberSelectableAdapter.ViewHolder>(), Filterable {
 
-    private var membersList = members
+    private var resultsList = members
 
     override fun getFilter(): Filter {
         return object : Filter() {
 
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val results = FilterResults()
-                val suggestions = ArrayList<User>()
 
                 constraint?.let {
-                    if (it.isEmpty()) {
-                        membersList.addAll(members)
+
+                    if (constraint.isEmpty()) {
+                        resultsList = members
                     } else {
+                        val suggestions = ArrayList<User>()
                         val filterPattern = StringUtils.stripAccents(it.toString().toLowerCase().trim())
 
                         for (user in members) {
@@ -45,19 +46,19 @@ class GroupMemberSelectableAdapter(val context: Context, var members: ArrayList<
                                     }
                                 }
                             }
-                            membersList = suggestions
                         }
+                        resultsList = suggestions
                     }
                 }
-                results.values = membersList
-                results.count = membersList.size
+
+                results.values = resultsList
+                results.count = resultsList.size
 
                 return results
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                membersList.addAll(results?.values as ArrayList<User>)
-                Log.d("TEST", membersList.toString())
+                resultsList = results?.values as ArrayList<User>
                 notifyDataSetChanged()
             }
         }
@@ -73,12 +74,13 @@ class GroupMemberSelectableAdapter(val context: Context, var members: ArrayList<
         )
     }
 
-    override fun getItemCount() = members.size
+    override fun getItemCount() = resultsList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(position)
-        holder.userName.text = "${members[position].firstName} ${members[position].surname}"
-        Glide.with(context).load(members[position].photoPath).into(holder.userPhoto)
+        val user = resultsList[position]
+        holder.userName.text = "${user.firstName} ${user.surname}"
+        Glide.with(context).load(user.photoPath).into(holder.userPhoto)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {

@@ -51,7 +51,6 @@ class AddTaskMembersFragment : CommonFragment() {
 
         val textWatcher: TextWatcher = (object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -87,6 +86,7 @@ class AddTaskMembersFragment : CommonFragment() {
                         recyclerAdapter.members = membersList
                         layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
                         adapter = recyclerAdapter
+                        adapter?.notifyDataSetChanged()
                     }
                 }
             }.addOnCompleteListener {
