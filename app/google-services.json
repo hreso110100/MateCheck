@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "644075213608",
+    "firebase_url": "https://matecheck.firebaseio.com",
+    "project_id": "matecheck",
+    "storage_bucket": "matecheck.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644075213608:android:48912695955cc2ba",
+        "android_client_info": {
+          "package_name": "sk.spacecode.matecheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644075213608-ta4m3gklohredc53b4flo1kj83bf75c1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sk.spacecode.matecheck",
+            "certificate_hash": "97f6c94fd230df8de0b32cfe693f4e29a036ed54"
+          }
+        },
+        {
+          "client_id": "644075213608-bge641evaqf20fimt98tr6h634cgg3a9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sk.spacecode.matecheck",
+            "certificate_hash": "bec4bfb216d9fdfb6816bd458e4a95d7994d2511"
+          }
+        },
+        {
+          "client_id": "644075213608-6n8a1phm3uof0m2rp605e00u96bsqvhu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8mKVDZYv3GgugdqpXVf-MKLQDjvMjFi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644075213608-6n8a1phm3uof0m2rp605e00u96bsqvhu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,5 +6,6 @@ data class Group(
     var name: String = "",
     var creatorID: String = "",
     var dateOfCreation: Long = 0,
-    var membersID: ArrayList<String> = arrayListOf()
+    var membersID: ArrayList<String> = arrayListOf(),
+    var color: String=""
 ): Serializable

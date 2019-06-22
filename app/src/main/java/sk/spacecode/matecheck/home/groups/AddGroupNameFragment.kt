@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_add_group_name.view.*
 import sk.spacecode.matecheck.R
+import sk.spacecode.matecheck.enums.Colors
 import sk.spacecode.matecheck.home.groups.adapters.GroupMembersRecyclerAdapter
 import sk.spacecode.matecheck.model.Group
 import java.sql.Timestamp
@@ -89,12 +90,13 @@ class AddGroupNameFragment : Fragment() {
             val creator = auth.currentUser?.uid.toString()
             val currentTime = Timestamp(System.currentTimeMillis()).time
             val usersId: ArrayList<String> = arrayListOf()
+            val color : String = Colors.pickRandom()
 
             AddGroupFragment.addedUsers.forEach {
                 usersId.add(it.id!!)
             }
 
-            val group = Group(groupName, creator, currentTime, usersId)
+            val group = Group(groupName, creator, currentTime, usersId, color)
 
             FirebaseFirestore.getInstance().collection("Groups")
                 .document(UUID.randomUUID().toString()).set(group).addOnCompleteListener {
