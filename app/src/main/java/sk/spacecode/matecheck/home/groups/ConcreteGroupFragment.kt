@@ -1,5 +1,8 @@
 package sk.spacecode.matecheck.home.groups
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -9,12 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_concrete_group.*
 import kotlinx.android.synthetic.main.fragment_concrete_group.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.home.groups.adapters.GroupMembersRecyclerAdapter
 import sk.spacecode.matecheck.home.groups.tasks.AddTaskDescriptionFragment
 import sk.spacecode.matecheck.model.Group
 import sk.spacecode.matecheck.model.User
+
+
+
 
 
 class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
@@ -36,6 +43,7 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         group = bundle?.getSerializable("groupDetail") as Group
     }
 
+    @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,12 +51,15 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         rootView = inflater.inflate(R.layout.fragment_concrete_group, container, false)
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
+        val gradient = GradientDrawable(GradientDrawable.Orientation.TL_BR, intArrayOf(Color.parseColor(group.color),Color.parseColor("#000000"),Color.parseColor("#000000")))
+        rootView.concrete_groups_root_layout.background=gradient
 
         with(rootView.concrete_group_recycle_layout) {
             activity?.let {
                 adapter = GroupMembersRecyclerAdapter(it.applicationContext, AddGroupFragment.addedUsers)
                 linearLayoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
                 layoutManager = linearLayoutManager
+
             }
         }
 
@@ -69,8 +80,10 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         return rootView
     }
 
+    @SuppressLint("Range")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         rootView.concrete_group_progressBar.visibility = View.VISIBLE
         var userName: String
@@ -85,7 +98,8 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
                         userName = "${documentData.firstName} ${documentData.surname}"
                         rootView.concrete_group_text.text = group.name
                         rootView.concrete_group_creator_text.text = "By $userName"
-                        break
+
+                            break
                     }
                 }
             }.addOnCompleteListener {
