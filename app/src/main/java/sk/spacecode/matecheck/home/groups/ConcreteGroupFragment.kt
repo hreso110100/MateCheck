@@ -53,8 +53,13 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
         }
 
         rootView.concrete_group_add_task_button.setOnClickListener {
+            val bundle = Bundle()
+            val fragment = AddTaskDescriptionFragment()
+            bundle.putSerializable("groupDetail", group)
+            fragment.arguments = bundle
+
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.home_fragment_container, AddTaskDescriptionFragment())
+                ?.replace(R.id.home_fragment_container, fragment)
                 ?.addToBackStack(null)
                 ?.commit()
         }

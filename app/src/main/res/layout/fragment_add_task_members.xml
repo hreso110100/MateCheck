@@ -29,7 +29,7 @@
             android:text="@string/assign_task"/>
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_task_input_layout"
+            android:id="@+id/add_task_members_input_layout"
             style="@style/textInputLayoutOutlined"
             android:hint="@string/search"
             android:layout_marginTop="16dp"
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_task_input"
+                android:id="@+id/add_task_members_input"
                 android:singleLine="true"
                 style="@style/textInput"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +52,7 @@
     <TextView
             android:id="@+id/add_task_members_label"
             style="@style/textLabel"
-            app:layout_constraintTop_toBottomOf="@id/add_task_input_layout"
+            app:layout_constraintTop_toBottomOf="@id/add_task_members_input_layout"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/group_members"/>
 
@@ -62,5 +62,13 @@
             app:layout_constraintTop_toBottomOf="@id/add_task_members_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+            android:id="@+id/add_task_members_progressBar"
+            style="@style/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

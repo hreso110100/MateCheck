@@ -12,14 +12,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import sk.spacecode.matecheck.R
+import sk.spacecode.matecheck.common.CommonFragment
 import sk.spacecode.matecheck.login.LoginActivity
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : CommonFragment() {
 
-    private lateinit var rootView: View
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var firestore: FirebaseFirestore
-
+    //TODO pridat progress bar pri nacitani dat
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,11 +25,9 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         rootView = inflater.inflate(R.layout.fragment_profile, container, false)
-        firebaseAuth = FirebaseAuth.getInstance()
-        firestore = FirebaseFirestore.getInstance()
 
         firestore.collection("Users")
-            .document(firebaseAuth.currentUser?.uid.toString()).get().addOnSuccessListener {
+            .document(auth.currentUser?.uid.toString()).get().addOnSuccessListener {
                 rootView.home_profile_username.text = activity?.applicationContext
                     ?.getString(R.string.username, it.getString("firstName"), it.getString("surname"))
 
@@ -44,10 +40,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rootView.home_profile_logout_button.setOnClickListener {
-            firebaseAuth.signOut()
+            auth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java))
         }
     }
-
-
 }
