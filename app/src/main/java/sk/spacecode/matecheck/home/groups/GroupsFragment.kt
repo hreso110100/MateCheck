@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_groups.view.*
 import sk.spacecode.matecheck.R
-import sk.spacecode.matecheck.home.groups.adapters.GroupsListRecyclerAdapter
+import sk.spacecode.matecheck.home.groups.adapters.GroupsListAdapter
 import sk.spacecode.matecheck.home.groups.decorators.RecyclerViewItemDecorator
 import sk.spacecode.matecheck.model.Group
 
@@ -57,7 +57,7 @@ class GroupsFragment : Fragment() {
 
                 with(rootView.groups_recycle_layout) {
                     activity?.let {
-                        adapter = GroupsListRecyclerAdapter(it.applicationContext, groupList, it.supportFragmentManager)
+                        adapter = GroupsListAdapter(it.applicationContext, groupList, it.supportFragmentManager)
                         gridLayoutManager = GridLayoutManager(it.applicationContext, 2, RecyclerView.VERTICAL, false)
                         layoutManager = gridLayoutManager
                         addItemDecoration(RecyclerViewItemDecorator(16))

@@ -49,18 +49,27 @@
                 style="@style/textInput"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/add_task_members_added_users_recycler"
+            style="@style/recyclerViewHorizontal"
+            app:layout_constraintTop_toBottomOf="@id/add_task_members_input_layout"
+            app:layout_constraintBottom_toTopOf="@id/add_task_members_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
             android:id="@+id/add_task_members_label"
             style="@style/textLabel"
-            app:layout_constraintTop_toBottomOf="@id/add_task_members_input_layout"
+            app:layout_constraintTop_toBottomOf="@id/add_task_members_added_users_recycler"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/group_members"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/add_task_members_recycler"
-            style="@style/recyclerView"
+            style="@style/recyclerViewVertical"
             app:layout_constraintTop_toBottomOf="@id/add_task_members_label"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
     <ProgressBar

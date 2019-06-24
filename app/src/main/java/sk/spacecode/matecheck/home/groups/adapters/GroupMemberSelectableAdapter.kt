@@ -10,13 +10,20 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_add_task_members.view.*
 import kotlinx.android.synthetic.main.group_members_selectable_row.view.*
 import org.apache.commons.lang3.StringUtils
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.model.User
 
 
-class GroupMemberSelectableAdapter(val context: Context, var members: ArrayList<User>) :
+class GroupMemberSelectableAdapter(
+    val context: Context,
+    var members: ArrayList<User>,
+    var assigned: ArrayList<User>,
+    var rootView: View,
+    var assignedAdapter: GroupMemberPhotoAdapter
+) :
     RecyclerView.Adapter<GroupMemberSelectableAdapter.ViewHolder>(), Filterable {
 
     private var resultsList = members
@@ -83,8 +90,7 @@ class GroupMemberSelectableAdapter(val context: Context, var members: ArrayList<
         Glide.with(context).load(user.photoPath).into(holder.userPhoto)
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
-        private val itemStateArray = SparseBooleanArray()
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var userName = view.group_member_selectable_row_name
         var userPhoto = view.group_member_selectable_row_photo
 
@@ -93,19 +99,32 @@ class GroupMemberSelectableAdapter(val context: Context, var members: ArrayList<
         }
 
         fun bind(position: Int) {
-            userName.isChecked = itemStateArray.get(position, false)
+            userName.isChecked = resultsList[position] in assigned
         }
 
         override fun onClick(v: View) {
-            val adapterPosition = adapterPosition
-            if (!itemStateArray.get(adapterPosition, false)) {
+            if (resultsList[adapterPosition] !in assigned) {
                 userName.isChecked = true
-                itemStateArray.put(adapterPosition, true)
+                assigned.add(resultsList[adapterPosition])
+                assignedAdapter.notifyDataSetChanged()
             } else {
+                assigned.remove(resultsList[adapterPosition])
                 userName.isChecked = false
-                itemStateArray.put(adapterPosition, false)
+                assignedAdapter.notifyDataSetChanged()
             }
-        }
 
+            if (assigned.isEmpty()) {
+                with(rootView.add_task_members_next_button) {
+                    isEnabled = false
+                    alpha = 0.5F
+                }
+            } else {
+                with(rootView.add_task_members_next_button) {
+                    isEnabled = true
+                    alpha = 1F
+                }
+            }
+
+        }
     }
 }

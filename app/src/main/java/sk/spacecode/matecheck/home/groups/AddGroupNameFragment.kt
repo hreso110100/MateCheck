@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_add_group_name.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.enums.Colors
-import sk.spacecode.matecheck.home.groups.adapters.GroupMembersRecyclerAdapter
+import sk.spacecode.matecheck.home.groups.adapters.GroupMembersAdapter
 import sk.spacecode.matecheck.model.Group
 import java.sql.Timestamp
 import java.util.*
@@ -43,7 +42,7 @@ class AddGroupNameFragment : Fragment() {
 
         with(rootView.groups_add_name_recycler) {
             activity?.let {
-                adapter = GroupMembersRecyclerAdapter(it.applicationContext, AddGroupFragment.addedUsers)
+                adapter = GroupMembersAdapter(it.applicationContext, AddGroupFragment.addedUsers)
                 linearLayoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
                 layoutManager = linearLayoutManager
             }

@@ -73,12 +73,20 @@
         <item name="android:textCursorDrawable">@drawable/cursor_white</item>
     </style>
 
-    <style name="recyclerView">
+    <style name="recyclerViewVertical">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:scrollbars">vertical</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="recyclerViewHorizontal">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:scrollbars">horizontal</item>
         <item name="android:overScrollMode">never</item>
     </style>
 

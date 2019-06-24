@@ -12,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_concrete_group.*
 import kotlinx.android.synthetic.main.fragment_concrete_group.view.*
 import sk.spacecode.matecheck.R
-import sk.spacecode.matecheck.home.groups.adapters.GroupMembersRecyclerAdapter
+import sk.spacecode.matecheck.home.groups.adapters.GroupMembersAdapter
 import sk.spacecode.matecheck.home.groups.tasks.AddTaskDescriptionFragment
 import sk.spacecode.matecheck.model.Group
 import sk.spacecode.matecheck.model.User
@@ -56,7 +55,7 @@ class ConcreteGroupFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
 
         with(rootView.concrete_group_recycle_layout) {
             activity?.let {
-                adapter = GroupMembersRecyclerAdapter(it.applicationContext, AddGroupFragment.addedUsers)
+                adapter = GroupMembersAdapter(it.applicationContext, AddGroupFragment.addedUsers)
                 linearLayoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
                 layoutManager = linearLayoutManager
 

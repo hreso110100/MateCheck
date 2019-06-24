@@ -11,14 +11,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.group_card.view.*
 import sk.spacecode.matecheck.R
-import sk.spacecode.matecheck.enums.Colors
-import sk.spacecode.matecheck.home.HomeActivity
 import sk.spacecode.matecheck.home.groups.ConcreteGroupFragment
 import sk.spacecode.matecheck.model.Group
 
 
-class GroupsListRecyclerAdapter(val context: Context, var  groups: ArrayList<Group>, var fm: FragmentManager) :
-    RecyclerView.Adapter<GroupsListRecyclerAdapter.ViewHolder>() {
+class GroupsListAdapter(val context: Context, var  groups: ArrayList<Group>, var fm: FragmentManager) :
+    RecyclerView.Adapter<GroupsListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.group_card, parent, false))

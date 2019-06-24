@@ -10,8 +10,8 @@ import kotlinx.android.synthetic.main.group_members_recycler_row.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.model.User
 
-class GroupMembersRecyclerAdapter(val context: Context, var members: ArrayList<User>) :
-    RecyclerView.Adapter<GroupMembersRecyclerAdapter.ViewHolder>() {
+class GroupMembersAdapter(val context: Context, var members: ArrayList<User>) :
+    RecyclerView.Adapter<GroupMembersAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.group_members_recycler_row, parent, false))

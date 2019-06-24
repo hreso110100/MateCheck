@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_add_task_members.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.common.CommonFragment
+import sk.spacecode.matecheck.home.groups.adapters.GroupMemberPhotoAdapter
 import sk.spacecode.matecheck.home.groups.adapters.GroupMemberSelectableAdapter
 import sk.spacecode.matecheck.home.tasks.ConcreteTaskFragment
 import sk.spacecode.matecheck.model.Group
@@ -20,8 +21,10 @@ import sk.spacecode.matecheck.model.User
 
 class AddTaskMembersFragment : CommonFragment() {
     private var membersList = arrayListOf<User>()
+    private var assignedList = arrayListOf<User>()
     private lateinit var group: Group
-    private lateinit var recyclerAdapter: GroupMemberSelectableAdapter
+    private var selectableRecyclerAdapter: GroupMemberSelectableAdapter? = null
+    private lateinit var assignedRecyclerAdapter: GroupMemberPhotoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +41,27 @@ class AddTaskMembersFragment : CommonFragment() {
         rootView = inflater.inflate(R.layout.fragment_add_task_members, container, false)
 
         activity?.let {
-            recyclerAdapter = GroupMemberSelectableAdapter(it.applicationContext, membersList)
+
+            with(rootView.add_task_members_added_users_recycler) {
+                layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.HORIZONTAL, false)
+                assignedRecyclerAdapter =
+                    GroupMemberPhotoAdapter(it.applicationContext, assignedList, rootView, selectableRecyclerAdapter)
+                adapter = assignedRecyclerAdapter
+            }
+
+            with(rootView.add_task_members_recycler) {
+                layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
+                selectableRecyclerAdapter = GroupMemberSelectableAdapter(
+                    it.applicationContext,
+                    membersList,
+                    assignedList,
+                    rootView,
+                    assignedRecyclerAdapter
+                )
+                adapter = selectableRecyclerAdapter
+            }
+
+            assignedRecyclerAdapter.selectableAdapter = selectableRecyclerAdapter
         }
 
         return rootView
@@ -59,7 +82,7 @@ class AddTaskMembersFragment : CommonFragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val member = rootView.add_task_members_input.text.toString().trim()
-                recyclerAdapter.filter.filter(member)
+                selectableRecyclerAdapter?.filter?.filter(member)
             }
         })
 
@@ -81,14 +104,8 @@ class AddTaskMembersFragment : CommonFragment() {
                         membersList.add(user)
                     }
                 }
-                with(rootView.add_task_members_recycler) {
-                    activity?.let {
-                        recyclerAdapter.members = membersList
-                        layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
-                        adapter = recyclerAdapter
-                        adapter?.notifyDataSetChanged()
-                    }
-                }
+                rootView.add_task_members_recycler.adapter?.notifyDataSetChanged()
+
             }.addOnCompleteListener {
                 if (it.isSuccessful) {
                     rootView.add_task_members_progressBar.visibility = View.GONE
