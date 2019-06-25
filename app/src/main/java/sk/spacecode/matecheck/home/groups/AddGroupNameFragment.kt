@@ -18,7 +18,6 @@ import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.enums.Colors
 import sk.spacecode.matecheck.home.groups.adapters.GroupMembersAdapter
 import sk.spacecode.matecheck.model.Group
-import java.sql.Timestamp
 import java.util.*
 
 
@@ -85,37 +84,33 @@ class AddGroupNameFragment : Fragment() {
         rootView.groups_add_name_next_button.setOnClickListener {
             rootView.groups_add_progressBar.visibility = View.VISIBLE
 
+            val groupID = UUID.randomUUID().toString()
             val groupName = rootView.groups_name_input.text.toString()
             val creator = auth.currentUser?.uid.toString()
-            val currentTime = Timestamp(System.currentTimeMillis()).time
             val usersId: ArrayList<String> = arrayListOf()
-            val color : String = Colors.pickRandom()
+            val color: String = Colors.pickRandom()
 
             AddGroupFragment.addedUsers.forEach {
-                usersId.add(it.id!!)
+                usersId.add(it.ID!!)
             }
 
-            val group = Group(groupName, creator, currentTime, usersId, color)
+            val group = Group(groupID, groupName, creator, membersID = usersId, color = color)
 
             FirebaseFirestore.getInstance().collection("Groups")
-                .document(UUID.randomUUID().toString()).set(group).addOnCompleteListener {
+                .document(groupID).set(group).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Log.d(TAG, "createGroupFirestore:success")
+                        val bundle = Bundle()
+                        val fragment = ConcreteGroupFragment()
+                        bundle.putSerializable("groupDetail", group)
+                        fragment.arguments = bundle
+
+                        activity?.supportFragmentManager?.beginTransaction()
+                            ?.replace(R.id.home_fragment_container, fragment)
+                            ?.commit()
                     } else {
                         Log.d(TAG, "createGroupFirestore:failure", it.exception)
                     }
-
                     rootView.groups_add_progressBar.visibility = View.GONE
-
-                    val bundle = Bundle()
-                    val fragment = ConcreteGroupFragment()
-                    bundle.putSerializable("groupDetail", group)
-                    fragment.arguments = bundle
-
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.home_fragment_container, fragment)
-                        ?.commit()
-
                 }
         }
     }

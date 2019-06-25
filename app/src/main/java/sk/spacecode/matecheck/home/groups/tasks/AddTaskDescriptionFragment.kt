@@ -42,7 +42,8 @@ class AddTaskDescriptionFragment : CommonFragment() {
 
         with(rootView) {
             add_task_description_back_button.goBack()
-            task_description_next_button.goNext(fragment)
+            add_task_description_next_button.goNext(fragment)
+            add_task_description_next_button.isEnabled = true
         }
 
     }

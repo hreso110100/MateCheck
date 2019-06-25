@@ -57,7 +57,7 @@ class AddGroupFragment : Fragment() {
         val fragmentManager = activity?.supportFragmentManager
 
         for (member in addedUsers) {
-            if (member.id != auth.currentUser?.uid) {
+            if (member.ID != auth.currentUser?.uid) {
                 createChip(member.firstName!!)
             }
         }
@@ -85,10 +85,10 @@ class AddGroupFragment : Fragment() {
                 for (document in documents) {
                     val documentData = document.toObject(User::class.java)
 
-                    if (documentData.id == auth.currentUser?.uid && !addedUsers.contains(documentData)) {
+                    if (documentData.ID == auth.currentUser?.uid && !addedUsers.contains(documentData)) {
                         addedUsers.add(documentData)
                     } else {
-                        if (documentData.id != auth.currentUser?.uid) {
+                        if (documentData.ID != auth.currentUser?.uid) {
                             suggestionUsers.add(documentData)
                         }
                     }

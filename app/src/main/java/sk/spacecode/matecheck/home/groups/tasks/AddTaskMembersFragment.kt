@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_add_task_members.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.common.CommonFragment
@@ -17,12 +18,15 @@ import sk.spacecode.matecheck.home.groups.adapters.GroupMemberPhotoAdapter
 import sk.spacecode.matecheck.home.groups.adapters.GroupMemberSelectableAdapter
 import sk.spacecode.matecheck.home.tasks.ConcreteTaskFragment
 import sk.spacecode.matecheck.model.Group
+import sk.spacecode.matecheck.model.Task
 import sk.spacecode.matecheck.model.User
+import java.util.*
 
 class AddTaskMembersFragment : CommonFragment() {
     private var membersList = arrayListOf<User>()
     private var assignedList = arrayListOf<User>()
     private lateinit var group: Group
+    private lateinit var task: Task
     private var selectableRecyclerAdapter: GroupMemberSelectableAdapter? = null
     private lateinit var assignedRecyclerAdapter: GroupMemberPhotoAdapter
 
@@ -90,7 +94,10 @@ class AddTaskMembersFragment : CommonFragment() {
             add_task_members_progressBar.visibility = View.VISIBLE
             add_task_members_input.addTextChangedListener(textWatcher)
             add_task_members_back_button.goBack()
-            add_task_members_next_button.goNext(ConcreteTaskFragment())
+
+            add_task_members_next_button.setOnClickListener {
+                createTask()
+            }
         }
     }
 
@@ -100,7 +107,7 @@ class AddTaskMembersFragment : CommonFragment() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val user = document.toObject(User::class.java)
-                    if (user.id in group.membersID) {
+                    if (user.ID in group.membersID) {
                         membersList.add(user)
                     }
                 }
@@ -114,6 +121,24 @@ class AddTaskMembersFragment : CommonFragment() {
             .addOnFailureListener { exception ->
                 rootView.add_task_members_progressBar.visibility = View.GONE
                 Log.w(AddTaskMembersFragment::class.simpleName, "Error getting documents: ", exception)
+            }
+    }
+
+    private fun createTask() {
+        rootView.add_task_members_progressBar.visibility = View.VISIBLE
+        // TODO replace mocked tasks
+        task = Task("TEST", groupID = group.ID)
+
+        FirebaseFirestore.getInstance().collection("Tasks")
+            .document(UUID.randomUUID().toString()).set(task).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.home_fragment_container, ConcreteTaskFragment())
+                        ?.commit()
+                } else {
+                    Log.d(AddTaskMembersFragment::class.simpleName, "createTaskFirestore:failure", it.exception)
+                }
+                rootView.add_task_members_progressBar.visibility = View.GONE
             }
     }
 }

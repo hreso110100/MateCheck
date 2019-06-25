@@ -13,7 +13,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/add_task_description_next_button"
+            style="@style/nextTextButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/add_task_description_headline"
             style="@style/textHeadline"
             app:layout_constraintTop_toBottomOf="@id/add_task_description_back_button"
@@ -21,28 +27,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/task_description"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/task_description_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:hint="@string/task_description_label"
-            android:textColorHint="@android:color/black"
-            android:background="@drawable/edittext_background"
-            android:padding="12dp"
-            android:textCursorDrawable="@drawable/cursor_green"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:maxLines="3"
-            android:maxLength="100"
-            android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_task_name_input_layout"
+            style="@style/textInputLayoutFilled"
+            android:hint="@string/task_name"
+            android:layout_marginTop="16dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
             app:layout_constraintTop_toBottomOf="@id/add_task_description_headline"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.07"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/add_task_name_input"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/cursor_green"
+                style="@style/textInput"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
             android:id="@+id/task_description_priority_label"
@@ -50,7 +51,7 @@
             android:text="@string/task_priority_label"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/task_description_input"
+            app:layout_constraintTop_toBottomOf="@id/add_task_name_input_layout"
             android:layout_margin="16dp"
             android:layout_height="wrap_content"/>
 
@@ -96,58 +97,12 @@
             android:layout_margin="16dp"
             android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/task_description_expiration_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/task_description_expiration_label"
-            android:hint="@string/task_description_label"
-            android:textColorHint="@android:color/black"
-            android:background="@drawable/edittext_background"
-            android:padding="12dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:clickable="true"
-            android:focusable="false"
-            android:cursorVisible="false"
-            android:longClickable="false"/>
-
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/task_description_next_button"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/task_description_input"
-            android:text="@string/group_create"
-            android:translationZ="5dp"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/colorPrimary"
-            android:alpha="0.5"
-            app:cornerRadius="35dp"
-            android:textAllCaps="false"
-            android:padding="12dp"
-            android:textSize="20sp"
-            android:layout_margin="16dp"
-            app:layout_constraintVertical_bias="0.929"
-            android:layout_marginEnd="16dp"/>
-
     <ProgressBar
             android:id="@+id/task_description_progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/progressBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:indeterminateTint="@color/colorPrimary"
-            android:visibility="gone"/>
-
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

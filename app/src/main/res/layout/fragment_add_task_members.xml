@@ -17,6 +17,7 @@
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/add_task_members_next_button"
             style="@style/nextTextButton"
+            android:text="@string/create"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
