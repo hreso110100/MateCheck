@@ -6,7 +6,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="NoActionBar" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="NoActionBar" parent="Theme.MaterialComponents.NoActionBar.Bridge">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -35,6 +35,21 @@
         <item name="android:enabled">false</item>
         <item name="android:clickable">true</item>
         <item name="android:alpha">0.5</item>
+    </style>
+
+    <style name="circledButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/next</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="cornerRadius">35dp</item>
+        <item name="android:alpha">0.5</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:enabled">false</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:padding">12dp</item>
     </style>
 
     <style name="textHeadline">

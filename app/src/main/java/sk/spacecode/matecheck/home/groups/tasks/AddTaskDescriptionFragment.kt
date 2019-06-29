@@ -5,14 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.android.synthetic.main.fragment_add_task_description.view.*
-
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.common.CommonFragment
-import sk.spacecode.matecheck.home.groups.ConcreteGroupFragment
 import sk.spacecode.matecheck.model.Group
+import java.util.*
 
-class AddTaskDescriptionFragment : CommonFragment() {
+
+class AddTaskDescriptionFragment : CommonFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var group: Group
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,9 +44,27 @@ class AddTaskDescriptionFragment : CommonFragment() {
         with(rootView) {
             add_task_description_back_button.goBack()
             add_task_description_next_button.goNext(fragment)
-            add_task_description_next_button.isEnabled = true
-        }
 
+            add_task_expiration_input.setOnClickListener {
+                val calendar = Calendar.getInstance()
+                val dpd = DatePickerDialog.newInstance(
+                    this@AddTaskDescriptionFragment,
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
+                )
+                dpd.isThemeDark = true
+                dpd.accentColor = resources.getColor(R.color.colorPrimary)
+                dpd.setOkColor("#FFFFFF")
+                dpd.setCancelColor("#FFFFFF")
+                dpd.show(activity!!.supportFragmentManager, "DatePickerDialog")
+            }
+        }
+    }
+
+    override fun onDateSet(view: DatePickerDialog, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+        val date = "$dayOfMonth.${monthOfYear + 1}.$year"
+        rootView.add_task_expiration_input.setText(date)
     }
 
 
