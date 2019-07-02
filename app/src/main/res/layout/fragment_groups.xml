@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/groups_collapse_layout"
+                android:id="@+id/tasks_collapse_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"

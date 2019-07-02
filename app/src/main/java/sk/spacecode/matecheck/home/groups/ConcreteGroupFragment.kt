@@ -13,7 +13,7 @@ import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.fragment_concrete_group.view.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.common.CommonFragment
-import sk.spacecode.matecheck.home.groups.adapters.TasksAdapter
+import sk.spacecode.matecheck.home.tasks.adapters.TasksGroupAdapter
 import sk.spacecode.matecheck.home.groups.tasks.AddTaskDescriptionFragment
 import sk.spacecode.matecheck.model.Group
 import sk.spacecode.matecheck.model.Task
@@ -22,6 +22,7 @@ import sk.spacecode.matecheck.model.User
 
 class ConcreteGroupFragment : CommonFragment(), AppBarLayout.OnOffsetChangedListener {
     private lateinit var group: Group
+    private lateinit var users: ArrayList<User>
     private lateinit var tasks: ArrayList<Task>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,7 @@ class ConcreteGroupFragment : CommonFragment(), AppBarLayout.OnOffsetChangedList
     ): View? {
 
         tasks = arrayListOf()
+        users = arrayListOf()
         rootView = inflater.inflate(R.layout.fragment_concrete_group, container, false)
 
         setBackgroundGradient()
@@ -63,7 +65,7 @@ class ConcreteGroupFragment : CommonFragment(), AppBarLayout.OnOffsetChangedList
         super.onViewCreated(view, savedInstanceState)
 
         rootView.concrete_group_progressBar.visibility = View.VISIBLE
-        getCreator()
+        getUsers()
         getTask()
     }
 
@@ -82,7 +84,7 @@ class ConcreteGroupFragment : CommonFragment(), AppBarLayout.OnOffsetChangedList
             }
         }
 
-    private fun getCreator() {
+    private fun getUsers() {
         firestore.collection("Users")
             .get()
             .addOnSuccessListener { documents ->
@@ -93,9 +95,8 @@ class ConcreteGroupFragment : CommonFragment(), AppBarLayout.OnOffsetChangedList
                         rootView.concrete_group_text.text = group.name
                         rootView.concrete_group_creator_text.text =
                             "By ${documentData.firstName} ${documentData.surname}"
-
-                        break
                     }
+                    users.add(documentData)
                 }
             }.addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -122,7 +123,12 @@ class ConcreteGroupFragment : CommonFragment(), AppBarLayout.OnOffsetChangedList
 
                 with(rootView.concrete_group_recycle_layout) {
                     activity?.let {
-                        adapter = TasksAdapter(it.applicationContext, tasks, rootView)
+                        adapter = TasksGroupAdapter(
+                            it.applicationContext,
+                            tasks,
+                            users,
+                            rootView
+                        )
                         layoutManager = LinearLayoutManager(it.applicationContext, RecyclerView.VERTICAL, false)
                     }
                 }

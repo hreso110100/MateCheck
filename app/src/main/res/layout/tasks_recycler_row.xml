@@ -6,17 +6,18 @@
         android:layout_height="wrap_content">
 
     <ImageView
-            android:id="@+id/group_task_state_icon"
+            android:id="@+id/task_row_state_icon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_task_in_progress_green_40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-            android:id="@+id/group_task_row_name"
+            android:id="@+id/task_row_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -26,35 +27,33 @@
             android:layout_margin="16dp"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/group_task_state_icon"
-            app:layout_constraintEnd_toStartOf="@id/group_task_row_dots"
+            app:layout_constraintStart_toEndOf="@id/task_row_state_icon"
+            app:layout_constraintEnd_toStartOf="@id/task_row_dots"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-            android:id="@+id/group_task_row_members"
+            android:id="@+id/task_row_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:textAlignment="textStart"
             android:textColor="@android:color/white"
             android:alpha="0.8"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@id/group_task_state_icon"
-            app:layout_constraintEnd_toStartOf="@id/group_task_row_dots"
+            app:layout_constraintStart_toEndOf="@id/task_row_state_icon"
+            app:layout_constraintEnd_toStartOf="@id/task_row_dots"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/group_task_row_name"/>
+            app:layout_constraintTop_toBottomOf="@id/task_row_name"/>
 
     <ImageView
-            android:id="@+id/group_task_row_dots"
+            android:id="@+id/task_row_dots"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_more_vert_white_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

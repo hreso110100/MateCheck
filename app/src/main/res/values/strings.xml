@@ -35,7 +35,7 @@
     <string name="groups_info">Your groups</string>
 
     <string name="group_task_add">Add task</string>
-    <string name="concrete_group_empty_text">There are currently no tasks.</string>
+    <string name="empty_tasks">There are currently no tasks.</string>
 
     <string name="task_description">Task setup</string>
     <string name="task_description_label">Description</string>
@@ -52,5 +52,7 @@
     <string name="add_friends">Add Friends</string>
     <string name="friends">Friends</string>
     <string name="default_counter">0</string>
+    <string name="your_tasks">Your tasks</string>
+    <string name="task_counter">%1$d completed, %2$d in progress</string>
 </resources>
 

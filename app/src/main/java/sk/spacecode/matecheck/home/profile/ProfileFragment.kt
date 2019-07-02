@@ -39,9 +39,9 @@ class ProfileFragment : CommonFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rootView.home_profile_logout_button.setOnClickListener {
-            auth.signOut()
-            startActivity(Intent(activity, LoginActivity::class.java))
-        }
+//        rootView.home_profile_logout_button.setOnClickListener {
+//            auth.signOut()
+//            startActivity(Intent(activity, LoginActivity::class.java))
+//        }
     }
 }
