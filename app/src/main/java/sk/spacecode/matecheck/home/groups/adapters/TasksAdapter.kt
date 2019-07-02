@@ -22,8 +22,8 @@ class TasksAdapter(val context: Context, var tasks: ArrayList<Task>, var rootvie
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (tasks.size != 0) {
             rootview.concrete_group_empty_text.visibility = View.GONE
-            holder.taskName.text = "${tasks[position].name}"
-            holder.taskMembers.text = "${tasks[position].membersID}"
+            holder.taskName.text = tasks[position].name
+            holder.taskMembers.text = "${tasks[position].membersID}".removePrefix("[").removeSuffix("]")
         } else {
             rootview.concrete_group_empty_text.visibility = View.VISIBLE
         }

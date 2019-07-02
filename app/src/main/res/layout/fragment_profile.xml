@@ -33,6 +33,105 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_profile_inner_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_profile_username">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_profile_groups_label_value"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/home_profile_groups_label_text"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:text="@string/default_counter"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_profile_groups_label_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:text="@string/title_groups"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_profile_tasks_label_value"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/home_profile_tasks_label_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:text="@string/default_counter"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_profile_tasks_label_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_width="wrap_content"
+                android:text="@string/title_tasks"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_profile_friends_label_value"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/home_profile_friends_label_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:text="@string/default_counter"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_profile_friends_label_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:text="@string/friends"
+                android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/home_profile_find_friends"
+            style="@style/circledButton"
+            android:layout_width="140dp"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            app:cornerRadius="25dp"
+            android:enabled="true"
+            android:alpha="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/home_profile_inner_layout"
+            android:text="@string/add_friends"/>
+
     <com.google.android.material.button.MaterialButton
             android:id="@+id/home_profile_logout_button"
             android:layout_width="match_parent"

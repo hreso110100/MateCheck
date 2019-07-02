@@ -35,6 +35,7 @@ class AddTaskMembersFragment : CommonFragment() {
 
         val bundle = arguments
         group = bundle?.getSerializable("groupDetail") as Group
+        task = bundle.getSerializable("taskDetail") as Task
     }
 
     override fun onCreateView(
@@ -126,8 +127,10 @@ class AddTaskMembersFragment : CommonFragment() {
 
     private fun createTask() {
         rootView.add_task_members_progressBar.visibility = View.VISIBLE
-        // TODO replace mocked tasks
-        task = Task("TEST", groupID = group.ID)
+
+        task.groupID = group.ID
+        task.creatorID = auth.currentUser?.uid.toString()
+        assignedList.forEach { task.membersID.add(it.ID.toString()) }
 
         FirebaseFirestore.getInstance().collection("Tasks")
             .document(UUID.randomUUID().toString()).set(task).addOnCompleteListener {

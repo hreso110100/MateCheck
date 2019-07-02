@@ -160,7 +160,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:text="@string/concrete_group_empty_text"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
     <ProgressBar
             android:id="@+id/concrete_group_progressBar"

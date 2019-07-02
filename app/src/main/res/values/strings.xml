@@ -48,6 +48,9 @@
     <string name="assign_task">Assign task</string>
     <string name="task_name">Name</string>
     <string name="set_expiration">Expiration date</string>
-
+    <string name="title_notifications">Notifications</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="friends">Friends</string>
+    <string name="default_counter">0</string>
 </resources>
 

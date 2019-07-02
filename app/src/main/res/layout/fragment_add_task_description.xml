@@ -25,7 +25,7 @@
             android:id="@+id/add_task_name_input_layout"
             style="@style/textInputLayoutFilled"
             android:hint="@string/task_name"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="48dp"
             android:layout_marginBottom="16dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
@@ -36,6 +36,8 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_task_name_input"
                 android:singleLine="true"
+                android:textSize="18sp"
+                android:layout_height="60dp"
                 android:textCursorDrawable="@drawable/cursor_green"
                 style="@style/textInput"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,6 +60,8 @@
                 android:singleLine="true"
                 android:focusable="false"
                 android:clickable="true"
+                android:textSize="18sp"
+                android:layout_height="60dp"
                 android:longClickable="false"
                 android:textCursorDrawable="@drawable/cursor_green"
                 android:cursorVisible="false"
@@ -68,6 +72,7 @@
             android:id="@+id/task_description_priority_label"
             style="@style/textLabel"
             android:text="@string/task_priority_label"
+            android:paddingBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_task_expiration_input_layout"/>
 

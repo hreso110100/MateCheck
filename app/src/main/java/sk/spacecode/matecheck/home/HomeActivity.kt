@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import sk.spacecode.matecheck.R
 import sk.spacecode.matecheck.home.groups.ConcreteGroupFragment
 import sk.spacecode.matecheck.home.groups.GroupsFragment
+import sk.spacecode.matecheck.home.notifications.NotificationsFragment
 import sk.spacecode.matecheck.home.profile.ProfileFragment
 import sk.spacecode.matecheck.home.tasks.TasksFragment
 
@@ -17,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var fragment: Fragment
     private val groupsFragment = GroupsFragment()
     private val tasksFragment = TasksFragment()
+    private val notificationsFragment = NotificationsFragment()
     private val profileFragment = ProfileFragment()
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -26,6 +28,9 @@ class HomeActivity : AppCompatActivity() {
             }
             R.id.navigation_tasks -> {
                 fragment = tasksFragment
+            }
+            R.id.navigation_notifications -> {
+                fragment = notificationsFragment
             }
             R.id.navigation_profile -> {
                 fragment = profileFragment

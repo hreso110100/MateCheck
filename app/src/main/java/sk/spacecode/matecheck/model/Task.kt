@@ -2,6 +2,7 @@ package sk.spacecode.matecheck.model
 
 import sk.spacecode.matecheck.enums.TaskPriority
 import sk.spacecode.matecheck.enums.TaskState
+import java.io.Serializable
 import java.sql.Timestamp
 
 data class Task(
@@ -12,7 +13,7 @@ data class Task(
     var groupID: String = "",
     var dateOfCreation: Long = Timestamp(System.currentTimeMillis()).time,
     var dateOfExpiration: Long = 0,
-    var priority: TaskPriority = TaskPriority.LOW,
+    var priority: TaskPriority = TaskPriority.MEDIUM,
     var public: Boolean = false,
     var membersID: ArrayList<String> = arrayListOf()
-)
+) : Serializable
