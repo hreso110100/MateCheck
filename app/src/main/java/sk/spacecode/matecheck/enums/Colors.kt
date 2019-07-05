@@ -10,7 +10,7 @@ enum class Colors(val value: String) {
     PINK("#ec407a"),
     LIGHT_GREEN("#93F9B9"),
     CYAN("#3fada8"),
-    YELLOW("#CAC531"),
+    YELLOW("#cac531"),
     ORANGE("#F2994A"),
     BLUE_GREY("#78909c"),
     GREY("#808080"),

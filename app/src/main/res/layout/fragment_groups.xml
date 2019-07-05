@@ -9,87 +9,132 @@
         tools:context=".home.groups.GroupsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+            android:id="@+id/groups_appBarLayout"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:layout_height="wrap_content">
+            app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/tasks_collapse_layout"
+                android:id="@+id/groups_collapse_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <TextView
-                    android:id="@+id/groups_groups_text"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/groups_header_constraint_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/groups_text"
-                    android:layout_marginTop="80dp"
-                    android:layout_marginBottom="16dp"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="44sp"
-                    android:textStyle="bold"
-                    app:layout_collapseMode="parallax"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="88dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_collapseMode="parallax">
 
+                <TextView
+                        android:id="@+id/groups_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/groups_text"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="44sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                        android:id="@+id/groups_counter_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:textAllCaps="true"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/groups_header_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:alpha="0.5"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/groups_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="pin"
+                    android:elevation="0dp"
+                    app:contentInsetStart="0dp"
+                    android:background="@android:color/transparent">
+
+                <TextView
+                        android:id="@+id/groups_toolbar_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textAlignment="center"
+                        android:textSize="21sp"
+                        android:textStyle="bold"/>
+
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/groups_constraint_layout"
             android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             android:layout_height="match_parent">
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/groups_search"
-                android:layout_width="match_parent"
+                android:id="@+id/groups_add_group_button"
+                android:layout_width="200dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/search"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
+                app:cornerRadius="35dp"
+                android:text="@string/create_group"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
                 android:textAllCaps="false"
-                android:textAlignment="textStart"
-                android:gravity="start|center_vertical"
+                android:textAlignment="center"
+                android:gravity="center"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@android:color/white"
-                app:icon="@drawable/ic_search_black_24dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:layout_height="60dp"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/groups_info_text"
+                android:id="@+id/groups_starred_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/groups_search"
-                app:layout_constraintBottom_toTopOf="@id/groups_recycle_layout"
+                app:layout_constraintTop_toBottomOf="@id/groups_add_group_button"
                 android:textColor="@android:color/white"
-                android:text="@string/groups_info"/>
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                android:text="@string/favourite"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groups_recycle_layout_starred"
+                style="@style/recyclerViewHorizontal"
+                app:layout_constraintTop_toBottomOf="@id/groups_starred_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/groups_recycle_layout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:clipToPadding="false"
-                android:layout_marginBottom="56dp"
-                app:layout_constraintTop_toBottomOf="@id/groups_info_text"
+                style="@style/recyclerViewVertical"
+                app:layout_constraintTop_toBottomOf="@id/groups_recycle_layout_starred"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:scrollbars="vertical"
-                android:overScrollMode="never"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
@@ -99,21 +144,6 @@
 
     <ProgressBar
             android:id="@+id/groups_progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/colorPrimary"
-            android:visibility="gone"/>
+            style="@style/progressBar"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/groups_float_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@android:color/white"
-            app:tint="@color/colorPrimary"
-            android:layout_gravity="bottom|end"
-            app:elevation="5dp"
-            app:srcCompat="@drawable/ic_add_white_24dp"
-            android:layout_marginBottom="80dp"
-            android:layout_marginEnd="32dp"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

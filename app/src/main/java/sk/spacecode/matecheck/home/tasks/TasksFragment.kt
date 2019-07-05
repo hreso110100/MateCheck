@@ -123,8 +123,11 @@ class TasksFragment : CommonFragment(), AppBarLayout.OnOffsetChangedListener {
             }.addOnCompleteListener {
                 if (it.isSuccessful) {
                     rootView.tasks_progressBar.visibility = View.GONE
-                    rootView.tasks_counter_text.text =
-                        getString(R.string.task_counter, completedCounter, inProgressCounter)
+
+                    activity?.let {
+                        rootView.tasks_counter_text.text =
+                            getString(R.string.task_counter, completedCounter, inProgressCounter)
+                    }
                 }
             }
             .addOnFailureListener { exception ->

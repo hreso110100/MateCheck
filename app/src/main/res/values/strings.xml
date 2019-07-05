@@ -54,5 +54,16 @@
     <string name="default_counter">0</string>
     <string name="your_tasks">Your tasks</string>
     <string name="task_counter">%1$d completed, %2$d in progress</string>
+    <string name="groups_counter">%1$d total</string>
+    <string name="create_group">Create new</string>
+    <string name="favourite">Favourite</string>
+    <string name="group_card_completed_task">
+        <b>%1$d</b>
+        Completed
+    </string>
+    <string name="group_card_in_progress_task">
+        <b>%1$d</b>
+        In progress
+    </string>
 </resources>
 
